@@ -14,11 +14,11 @@ const Dashboard = () => {
     const fetchRepositories = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/repo/user/${userId}`
+          `https://aws-backend-9w0q.onrender.com/repo/user/${userId}`
         );
         const data = await response.json(); 
         console.log("User repos:", data);
-        setRepositories(data.repositories);
+        setRepositories(data.repositories || []);
       } catch (err) {
         console.error("Error while fecthing repositories: ", err);
       }
@@ -26,9 +26,9 @@ const Dashboard = () => {
 
     const fetchSuggestedRepositories = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/repo/all`);
+        const response = await fetch(`https://aws-backend-9w0q.onrender.com/repo/all`);
         const data = await response.json();
-        setSuggestedRepositories(data.repositories);
+        setSuggestedRepositories(data.repositories || []);
         console.log(suggestedRepositories);
       } catch (err) {
         console.error("Error while fecthing repositories: ", err);

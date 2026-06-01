@@ -20,7 +20,7 @@ const Profile = () => {
       if (userId) {
         try {
           const response = await axios.get(
-            `http://localhost:3000/userProfile/${userId}`
+            `https://aws-backend-9w0q.onrender.com/userProfile/${userId}`
           );
           setUserDetails(response.data);
         } catch (err) {
