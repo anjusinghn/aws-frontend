@@ -4,24 +4,33 @@ import "./navbar.css";
 
 const Navbar = () => {
   return (
-    <nav>
-      <Link to="/">
-        <div>
-          {/* <img
-            src="https://www.github.com/images/modules/logos_page/GitHub-Mark.png"
-            alt="GitHub Logo"
-          /> */}
-          <h3>GitHub</h3>
-        </div>
+    <nav className="navbar">
+
+      <Link
+        to="/"
+        className="navbar-logo"
+      >
+        VCS Cloud
       </Link>
-      <div>
-        <Link to="/create">
-          <p>Create a Repository</p>
+
+      <div className="navbar-links">
+
+        <Link
+          to="/create"
+          className="navbar-link"
+        >
+          Create Repository
         </Link>
-        <Link to="/profile">
-          <p>Profile</p>
+
+        <Link
+          to="/profile"
+          className="navbar-profile"
+        >
+          Profile
         </Link>
+
       </div>
+
     </nav>
   );
 };

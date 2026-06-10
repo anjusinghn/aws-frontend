@@ -1,68 +1,80 @@
 import React, { useEffect, useState } from "react";
 import HeatMap from "@uiw/react-heat-map";
 
-// Function to generate random activity
-const generateActivityData = (startDate, endDate) => {
+const generateActivityData = () => {
   const data = [];
-  let currentDate = new Date(startDate);
-  const end = new Date(endDate);
 
-  while (currentDate <= end) {
-    const count = Math.floor(Math.random() * 50);
+  const startDate = new Date();
+  startDate.setMonth(startDate.getMonth() - 6);
+
+  const today = new Date();
+
+  let current = new Date(startDate);
+
+  while (current <= today) {
+
     data.push({
-      date: currentDate.toISOString().split("T")[0], //YYY-MM-DD
-      count: count,
+      date: current.toISOString().split("T")[0],
+      count: Math.floor(Math.random() * 5),
     });
-    currentDate.setDate(currentDate.getDate() + 1);
+
+    current.setDate(current.getDate() + 1);
   }
 
   return data;
 };
 
-const getPanelColors = (maxCount) => {
-  const colors = {};
-  for (let i = 0; i <= maxCount; i++) {
-    const greenValue = Math.floor((i / maxCount) * 255);
-    colors[i] = `rgb(0, ${greenValue}, 0)`;
-  }
-
-  return colors;
-};
-
 const HeatMapProfile = () => {
+
   const [activityData, setActivityData] = useState([]);
-  const [panelColors, setPanelColors] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
-      const startDate = "2001-01-01";
-      const endDate = "2001-01-31";
-      const data = generateActivityData(startDate, endDate);
-      setActivityData(data);
 
-      const maxCount = Math.max(...data.map((d) => d.count));
-      setPanelColors(getPanelColors(maxCount));
-    };
+    const data = generateActivityData();
 
-    fetchData();
+    setActivityData(data);
+
   }, []);
 
   return (
-    <div>
-      <h4>Recent Contributions</h4>
+    <div className="heatmap-container">
+
+      <div className="heatmap-header">
+        Contribution Activity
+      </div>
+
       <HeatMap
-        className="HeatMapProfile"
-        style={{ maxWidth: "700px", height: "200px", color: "white" }}
         value={activityData}
-        weekLabels={["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]}
-        startDate={new Date("2001-01-01")}
-        rectSize={15}
-        space={3}
+        startDate={new Date(
+          new Date().setMonth(
+            new Date().getMonth() - 6
+          )
+        )}
+
+        width={900}
+
+        rectSize={16}
+
+        space={5}
+
         rectProps={{
-          rx: 2.5,
+          rx: 4,
         }}
-        panelColors={panelColors}
+
+        style={{
+          color: "#c9d1d9",
+          marginTop: "20px",
+        }}
+
+        panelColors={{
+          0: "#161b22",
+          1: "#0e4429",
+          2: "#006d32",
+          3: "#26a641",
+          4: "#39d353",
+        }}
       />
+
     </div>
   );
 };

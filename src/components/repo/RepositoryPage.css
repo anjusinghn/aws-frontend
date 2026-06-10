@@ -1,0 +1,147 @@
+.repo-page {
+  background: #0d1117;
+  color: white;
+  min-height: 100vh;
+  padding: 30px;
+  font-family: sans-serif;
+}
+
+.repo-header {
+  border-bottom: 1px solid #30363d;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.repo-header h1 {
+  font-size: 42px;
+}
+
+.repo-header p {
+  color: #8b949e;
+}
+
+.repo-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 25px;
+}
+
+.sidebar {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 20px;
+  height: fit-content;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.file-btn {
+  width: 100%;
+  background: #21262d;
+  color: white;
+  border: 1px solid #30363d;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.upload-btn,
+.commit-btn,
+.issue-btn {
+  background: #238636;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.upload-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.viewer {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.viewer-header {
+  background: #0d1117;
+  padding: 15px;
+  border-bottom: 1px solid #30363d;
+}
+
+.viewer pre {
+  padding: 20px;
+  min-height: 300px;
+  margin: 0;
+  color: #c9d1d9;
+  overflow-x: auto;
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.commit-input-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.commit-input-row input {
+  flex: 1;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  background: #0d1117;
+  color: white;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.commit-item,
+.issue-item {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.revert-btn {
+  background: #da3633;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.status {
+  color: #3fb950;
+}

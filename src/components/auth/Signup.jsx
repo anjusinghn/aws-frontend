@@ -18,11 +18,14 @@ const Signup = () => {
     try {
       setLoading(true);
 
-      const res = await axios.post("https://aws-backend-9w0q.onrender.com/signup", {
-        email,
-        username,
-        password,
-      });
+      const res = await axios.post(
+        "https://aws-backend-9w0q.onrender.com/signup",
+        {
+          email,
+          username,
+          password,
+        }
+      );
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.userId);
@@ -39,37 +42,52 @@ const Signup = () => {
   };
 
   return (
-    <div className="login-wrapper">
-      <div className="login-box-wrapper">
-        <div className="login-heading">
-          <h1>Sign Up</h1>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <div className="auth-logo">
+          Version Control System
         </div>
 
-        <div className="login-box">
-          <div>
-            <label className="label">Username</label>
+        <h1 className="auth-title">Create Account</h1>
+
+        <p className="auth-subtitle">
+          Start managing repositories and commits
+        </p>
+
+        <form onSubmit={handleSignup}>
+          <div className="auth-group">
+            <label className="auth-label">
+              Username
+            </label>
+
             <input
-              className="input"
+              className="auth-input"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
-          <div>
-            <label className="label">Email Address</label>
+          <div className="auth-group">
+            <label className="auth-label">
+              Email Address
+            </label>
+
             <input
-              className="input"
+              className="auth-input"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
-          <div>
-            <label className="label">Password</label>
+          <div className="auth-group">
+            <label className="auth-label">
+              Password
+            </label>
+
             <input
-              className="input"
+              className="auth-input"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -77,18 +95,16 @@ const Signup = () => {
           </div>
 
           <button
-            className="login-btn"
+            className="auth-button"
             disabled={loading}
-            onClick={handleSignup}
           >
-            {loading ? "Loading..." : "Sign Up"}
+            {loading ? "Loading..." : "Create Account"}
           </button>
-        </div>
+        </form>
 
-        <div className="pass-box">
-          <p>
-            Already have an account? <Link to="/auth">Login</Link>
-          </p>
+        <div className="auth-footer">
+          Already have an account?{" "}
+          <Link to="/auth">Login</Link>
         </div>
       </div>
     </div>

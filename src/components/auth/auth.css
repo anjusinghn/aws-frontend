@@ -1,146 +1,116 @@
-.login-wrapper {
-    color: #f1f6fd;
-    height: 100vh;
-    width: 100vw;
-    font-family: "Asap", sans-serif;
-    background-color: #0c1116;
-  }
-  
-  .login-logo-container {
-    padding: 40px 0px 20px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .logo-login {
-    width: 48px;
-  }
-  
-  .login-box-wrapper {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .login-box {
-    padding: 20px 0px;
-    width: 364px;
-    min-height: 300px;
-    border-radius: 10px;
-    background-color: #161a23;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .input {
-    width: 250px;
-    height: 35px;
-    background-color: #0c1116;
-    border-radius: 5px;
-    padding: 0 1rem;
-    border: 0.5px solid #f1f6fd;
-    font-size: 1rem;
-    color: whitesmoke;
-    transition: border-color 0.3s cubic-bezier(0.25, 0.01, 0.25, 1) 0s,
-      color 0.3s cubic-bezier(0.25, 0.01, 0.25, 1) 0s,
-      background 0.2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s;
-  }
-  
-  .label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #f1f6fd;
-    transition: color 0.3s cubic-bezier(0.25, 0.01, 0.25, 1) 0s;
-  }
-  
-  .input:hover,
-  .input:focus {
-    border-color: lightblue;
-  }
-  
-  .submit-btn {
-    background-color: #238636;
-    border: none;
-    width: 250px;
-    border-radius: 5px;
-    height: 35px;
-    color: #f1f6fd;
-    font-weight: 700;
-    padding: 0 1rem;
-  }
-  
-  .submit-btn:hover {
-    background-color: #499458;
-    cursor: pointer;
-  }
-  
-  .passkey-signin {
-    border: 0.5px solid #e6e9ed;
-    width: 360px;
-    border-radius: 10px;
-    height: 90px;
-    margin: 10px auto;
-  }
-  
-  .passkey-signin {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-direction: column;
-  }
-  
-  .passkey,
-  .signup {
-    color: #2b7df7;
-    cursor: pointer;
-    /* font-size: px; */
-  }
-  
-  .login-btn {
-    width: 250px;
-  }
-  
-  .pass-box {
-    width: 364px;
-    height: auto;
-    border-radius: 10px;
-    padding: 20px 10px;
-    border: 1px solid #3d3d3d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .signup-button {
-    width: 250px;
-  }
-  
-  @media screen and (max-width: 400px) {
-    .login-box {
-      width: 200px;
-    }
-  
-    .input {
-      width: 150px;
-    }
-  
-    .login-btn {
-      width: 150px;
-    }
-  
-    .pass-box {
-      width: 200px;
-    }
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  background: #0d1117;
+}
+
+.auth-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #0d1117;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.auth-card {
+  width: 420px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4);
+}
+
+.auth-title {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.auth-subtitle {
+  color: #8b949e;
+  margin-bottom: 35px;
+}
+
+.auth-group {
+  margin-bottom: 20px;
+}
+
+.auth-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #c9d1d9;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #30363d;
+  background: #0d1117;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease;
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  border-color: #58a6ff;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #238636;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin-top: 10px;
+}
+
+.auth-button:hover {
+  background: #2ea043;
+}
+
+.auth-footer {
+  margin-top: 30px;
+  text-align: center;
+  color: #8b949e;
+}
+
+.auth-footer a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+.auth-logo {
+  font-size: 18px;
+  color: #58a6ff;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}

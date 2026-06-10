@@ -32,76 +32,73 @@ const Profile = () => {
   }, []);
 
   return (
-    <>
-      <Navbar />
-      <UnderlineNav aria-label="Repository">
-        <UnderlineNav.Item
-          aria-current="page"
-          icon={BookIcon}
-          sx={{
-            backgroundColor: "transparent",
-            color: "white",
-            "&:hover": {
-              textDecoration: "underline",
-              color: "white",
-            },
-          }}
-        >
-          Overview
-        </UnderlineNav.Item>
+  <>
+    <Navbar />
 
-        <UnderlineNav.Item
-          onClick={() => navigate("/repo")}
-          icon={RepoIcon}
-          sx={{
-            backgroundColor: "transparent",
-            color: "whitesmoke",
-            "&:hover": {
-              textDecoration: "underline",
-              color: "white",
-            },
-          }}
-        >
-          Starred Repositories
-        </UnderlineNav.Item>
-      </UnderlineNav>
+    <div className="profile-page">
 
-      <button
-        onClick={() => {
-          localStorage.removeItem("token");
-          localStorage.removeItem("userId");
-          setCurrentUser(null);
+      <div className="profile-sidebar">
 
-          window.location.href = "/auth";
-        }}
-        style={{ position: "fixed", bottom: "50px", right: "50px" }}
-        id="logout"
-      >
-        Logout
-      </button>
-
-      <div className="profile-page-wrapper">
-        <div className="user-profile-section">
-          <div className="profile-image"></div>
-
-          <div className="name">
-            <h3>{userDetails.username}</h3>
-          </div>
-
-          <button className="follow-btn">Follow</button>
-
-          <div className="follower">
-            <p>10 Follower</p>
-            <p>3 Following</p>
-          </div>
+        <div className="profile-avatar">
+          {userDetails.username?.charAt(0).toUpperCase()}
         </div>
 
-        <div className="heat-map-section">
+        <h2>{userDetails.username}</h2>
+
+        <p className="profile-email">
+          {userDetails.email}
+        </p>
+
+        <div className="profile-meta">
+          Developer Account
+        </div>
+
+        <button
+          className="logout-btn"
+          onClick={() => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("userId");
+
+            setCurrentUser(null);
+
+            window.location.href = "/auth";
+          }}
+        >
+          Logout
+        </button>
+
+      </div>
+
+      <div className="profile-content">
+
+        <div className="stats-grid">
+
+          <div className="stat-card">
+            <h3>Repositories</h3>
+            <p>12</p>
+          </div>
+
+          <div className="stat-card">
+            <h3>Commits</h3>
+            <p>38</p>
+          </div>
+
+          <div className="stat-card">
+            <h3>Issues</h3>
+            <p>9</p>
+          </div>
+
+        </div>
+
+        <div className="heatmap-card">
           <HeatMapProfile />
         </div>
+
       </div>
-    </>
-  );
+
+    </div>
+  </>
+);
 };
 
 export default Profile;

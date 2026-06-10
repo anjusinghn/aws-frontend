@@ -1,30 +1,74 @@
-nav {
+.navbar {
+  height: 72px;
+  background: rgba(13, 17, 23, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding-bottom: 10px;
-  border-bottom: 2px solid white;
+
+  padding: 0 40px;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-nav img {
-  height: 50px;
-  border-radius: 100%;
+.navbar-logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
 }
-nav div {
+
+.navbar-links {
   display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
-nav h3 {
-  margin-left: 15px;
+.navbar-link {
+  text-decoration: none;
+  color: #c9d1d9;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+.navbar-link:hover {
   color: white;
 }
 
-nav p {
-  margin-left: 50px;
-  font-weight: bold;
+.navbar-profile {
+  text-decoration: none;
+  background: #238636;
   color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease;
 }
 
-nav h3:hover,
-nav p:hover {
-  text-decoration: underline;
+.navbar-profile:hover {
+  background: #2ea043;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .navbar-logo {
+    font-size: 22px;
+  }
+
+  .navbar-links {
+    gap: 12px;
+  }
+
+  .navbar-link {
+    font-size: 14px;
+  }
 }

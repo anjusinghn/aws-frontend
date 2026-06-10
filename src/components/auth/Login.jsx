@@ -17,10 +17,13 @@ const Login = () => {
     try {
       setLoading(true);
 
-      const res = await axios.post("https://aws-backend-9w0q.onrender.com/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://aws-backend-9w0q.onrender.com/login",
+        {
+          email,
+          password,
+        }
+      );
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.userId);
@@ -37,27 +40,39 @@ const Login = () => {
   };
 
   return (
-    <div className="login-wrapper">
-      <div className="login-box-wrapper">
-        <div className="login-heading">
-          <h1>Sign In</h1>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <div className="auth-logo">
+          Version Control System
         </div>
 
-        <div className="login-box">
-          <div>
-            <label className="label">Email Address</label>
+        <h1 className="auth-title">Welcome Back</h1>
+
+        <p className="auth-subtitle">
+          Sign in to continue to your repositories
+        </p>
+
+        <form onSubmit={handleLogin}>
+          <div className="auth-group">
+            <label className="auth-label">
+              Email Address
+            </label>
+
             <input
-              className="input"
+              className="auth-input"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
-          <div>
-            <label className="label">Password</label>
+          <div className="auth-group">
+            <label className="auth-label">
+              Password
+            </label>
+
             <input
-              className="input"
+              className="auth-input"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -65,18 +80,15 @@ const Login = () => {
           </div>
 
           <button
-            className="login-btn"
+            className="auth-button"
             disabled={loading}
-            onClick={handleLogin}
           >
-            {loading ? "Loading..." : "Login"}
+            {loading ? "Loading..." : "Sign In"}
           </button>
-        </div>
+        </form>
 
-        <div className="pass-box">
-          <p>
-            New here? <Link to="/signup">Create an account</Link>
-          </p>
+        <div className="auth-footer">
+          New here? <Link to="/signup">Create account</Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 import Navbar from "../Navbar";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [repositories, setRepositories] = useState([]);
@@ -16,7 +17,7 @@ const Dashboard = () => {
         const response = await fetch(
           `https://aws-backend-9w0q.onrender.com/repo/user/${userId}`
         );
-        const data = await response.json(); 
+        const data = await response.json();
         console.log("User repos:", data);
         setRepositories(data.repositories || []);
       } catch (err) {
@@ -52,61 +53,94 @@ const Dashboard = () => {
 
   //Added part
 
-//   useEffect(() => {
-//   console.log("repositories state:", repositories);
-// }, [repositories]);
+  //   useEffect(() => {
+  //   console.log("repositories state:", repositories);
+  // }, [repositories]);
 
-  return (
-    <>
-      <Navbar />
-      <section id="dashboard">
-        <aside>
+ return (
+  <>
+    <Navbar />
+
+    <div className="dashboard-page">
+      <div className="dashboard-container">
+
+        <aside className="dashboard-sidebar">
           <h3>Suggested Repositories</h3>
-          {suggestedRepositories.map((repo) => {
-            return (
-              <div key={repo._id}>
-                <h4>{repo.name}</h4>
-                <h4>{repo.description}</h4>
+
+          {suggestedRepositories.map((repo) => (
+            <div
+              className="suggested-card"
+              key={repo._id}
+            >
+              <div className="repo-name">
+                {repo.name}
               </div>
-            );
-          })}
+
+              <div className="repo-description">
+                {repo.description}
+              </div>
+            </div>
+          ))}
         </aside>
-        <main>
+
+        <main className="dashboard-main">
           <h2>Your Repositories</h2>
-          <div id="search">
+
+          <div className="search-box">
             <input
               type="text"
               value={searchQuery}
-              placeholder="Search..."
-              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search repositories..."
+              onChange={(e) =>
+                setSearchQuery(e.target.value)
+              }
             />
           </div>
-          {searchResults.map((repo) => {
-            return (
-              <div key={repo._id}>
-                <h4>{repo.name}</h4>
-                <h4>{repo.description}</h4>
-              </div>
-            );
-          })}
+
+          {searchResults.length === 0 ? (
+            <p className="empty-text">
+              No repositories found.
+            </p>
+          ) : (
+            searchResults.map((repo) => (
+              <Link
+                key={repo._id}
+                to={`/repo/${repo._id}`}
+              >
+                <div className="repo-card">
+                  <div className="repo-name">
+                    {repo.name}
+                  </div>
+
+                  <div className="repo-description">
+                    {repo.description}
+                  </div>
+                </div>
+              </Link>
+            ))
+          )}
         </main>
-        <aside>
-          <h3>Upcoming Events</h3>
-          <ul>
-            <li>
-              <p>Tech Conference - Dec 15</p>
-            </li>
-            <li>
-              <p>Developer Meetup - Dec 25</p>
-            </li>
-            <li>
-              <p>React Summit - Jan 5</p>
-            </li>
-          </ul>
+
+        <aside className="dashboard-right">
+          <h3>Developer Events</h3>
+
+          <div className="event-card">
+            Tech Conference — Dec 15
+          </div>
+
+          <div className="event-card">
+            Developer Meetup — Dec 25
+          </div>
+
+          <div className="event-card">
+            React Summit — Jan 5
+          </div>
         </aside>
-      </section>
-    </>
-  );
+
+      </div>
+    </div>
+  </>
+);
 };
 
 export default Dashboard;
