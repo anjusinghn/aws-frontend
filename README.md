@@ -1,8 +1,18 @@
-# React + Vite
+# Distributed VCS Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend repository for the Distributed Version Control System project.
 
-Currently, two official plugins are available:
+Built using:
+- React
+- CSS
+- Axios
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features:
+- Repository dashboard
+- Commit history viewer
+- File explorer
+- Issue tracking
+- Repository hosting UI
+
+Backend Repository:
+https://github.com/anjusinghn/distributed-vcs-backend
